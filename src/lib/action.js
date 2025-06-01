@@ -18,7 +18,7 @@ export const addPost = async (prevState,formData) => {
 
   // 2️⃣ read the file **before** Object.fromEntries strips it
   let imgPath = null;
-  if (file && (file instanceof File)){
+  if (file && (file instanceof File) && file.size!==0 ){
 // / 3️⃣ turn it into a Buffer
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
@@ -29,6 +29,7 @@ export const addPost = async (prevState,formData) => {
   await writeFile(uploadPath, buffer);
   imgPath = `/uploads/${filename}`
   }
+
 
 
   
