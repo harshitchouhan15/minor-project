@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import styles from "./admin.module.css";
+import styles from "@/app/admin/admin.module.css";
 import AdminPosts from "@/components/adminPosts/adminPosts";
 import AdminPostForm from "@/components/adminPostForm/adminPostForm";
 import AdminUsers from "@/components/adminUsers/adminUsers";
@@ -12,7 +12,7 @@ const AdminPage = async () => {
 
   return (
     <div className={styles.container}>
-      {/* <div className={styles.row}>
+      <div className={styles.row}>
         <div className={styles.col}>
           <Suspense fallback={<div>Loading...</div>}>
             <AdminPosts />
@@ -21,8 +21,8 @@ const AdminPage = async () => {
         <div className={styles.col}>
           <AdminPostForm userId = {session.user.id} />
         </div>
-      </div> */}
-      <div className={styles.row}>
+      </div>
+      {/* <div className={styles.row}>
         <div className={styles.col}>
           <Suspense fallback={<div>Loading...</div>}>
             <AdminUsers />
@@ -31,7 +31,7 @@ const AdminPage = async () => {
         <div className={styles.col}>
           <AdminUserForm />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -2,9 +2,11 @@ import { getPosts } from "@/lib/data";
 import styles from "./adminPosts.module.css";
 import Image from "next/image";
 import { deletePost } from "@/lib/action";
+import { auth } from "@/lib/auth";
 
 const AdminPosts = async () => {
-  const posts = await getPosts();
+  const session  =  await auth()
+  const posts = await getPosts(session.user);
 
   return (
     <div className={styles.container}>
@@ -17,6 +19,7 @@ const AdminPosts = async () => {
               alt=""
               width={50}
               height={50}
+              
             />
             <span className={styles.postTitle}>{post.title}</span>
           </div>

@@ -9,16 +9,16 @@ import { authConfig } from "./auth.config";
 const login = async (credentials) => {
   try {
     connectToDb();
-    const user = await User.findOne({ username: credentials.username });
+    const user = await User.findOne({ email: credentials.username });
 
-    if (!user) throw new Error("Wrong credentials!");
+    if (!user) throw new Error("User not found!");
 
     const isPasswordCorrect = await bcrypt.compare(
       credentials.password,
       user.password
     );
 
-    if (!isPasswordCorrect) throw new Error("Wrong credentials!");
+    if (!isPasswordCorrect) throw new Error("Wrong Password!");
 
     return user;
   } catch (err) {

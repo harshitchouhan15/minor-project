@@ -15,10 +15,17 @@ import { unstable_noStore as noStore } from "next/cache";
 //   { id: 4, title: "Post 4", body: "......", userId: 2 },
 // ];
 
-export const getPosts = async () => {
+export const getPosts = async (user) => {
   try {
     connectToDb();
-    const posts = await Post.find();
+    let posts;
+    if(user.isAdmin){
+     posts = await Post.find();
+
+    }else{
+     posts = await Post.find({userId:user.id});
+
+    }
     return posts;
   } catch (err) {
     console.log(err);
@@ -29,7 +36,7 @@ export const getPosts = async () => {
 export const getPost = async (slug) => {
   try {
     connectToDb();
-    const post = await Post.findOne({ slug });
+    const post = await Post.findById(slug);
     return post;
   } catch (err) {
     console.log(err);

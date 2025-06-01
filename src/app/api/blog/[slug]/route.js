@@ -8,7 +8,7 @@ export const GET = async (request, { params }) => {
   try {
     connectToDb();
 
-    const post = await Post.findOne({ slug });
+    const post = await Post.findById(slug);
     return NextResponse.json(post);
   } catch (err) {
     console.log(err);
@@ -22,7 +22,7 @@ export const DELETE = async (request, { params }) => {
   try {
     connectToDb();
 
-    await Post.deleteOne({ slug });
+    await Post.findByIdAndDelete(slug);
     return NextResponse.json("Post deleted");
   } catch (err) {
     console.log(err);

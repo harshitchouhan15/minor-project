@@ -6,15 +6,23 @@ const PostCard = ({post}) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        {post.img && <div className={styles.imgContainer}>
+         <div className={styles.imgContainer}>
+          {
+            post.img?
           <Image src={post.img} alt="" fill className={styles.img}/>
-        </div>}
-        <span className={styles.date}>{post.createdAt?.toString().slice(4, 16)}</span>
+          :
+          <div style={{display:"flex", height:"100%", alignItems:"center", justifyContent:"center" }} >Image not available!</div>
+
+          }
+        </div>
+        {/* <span className={styles.date}>{post.createdAt?.toString().slice(4, 16)}</span> */}
       </div>
       <div className={styles.bottom}>
         <h1 className={styles.title}>{post.title}</h1>
-        <p className={styles.desc}>{post.body}</p>
-        <Link className={styles.link} href={`/blog/${post.slug}`}>READ MORE</Link>
+        <p className={styles.desc}>{post.desc}</p>
+        <p style={{marginBottom:20}}  >{ new Date(post.createdAt).toLocaleString() }</p>
+
+        <Link className={styles.link} href={`/blog/${post._id}`}>READ MORE</Link>
       </div>
     </div>
   )

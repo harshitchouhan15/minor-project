@@ -1,8 +1,13 @@
 export const authConfig = {
+    // secret,
+
+  
   pages: {
     signIn: "/login",
   },
   providers: [],
+
+
   callbacks: {
     // FOR MORE DETAIL ABOUT CALLBACK FUNCTIONS CHECK https://next-auth.js.org/configuration/callbacks
     async jwt({ token, user }) {
@@ -40,7 +45,7 @@ export const authConfig = {
       // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
 
       if (isOnLoginPage && user) {
-        return Response.redirect(new URL("/", request.nextUrl));
+        return Response.redirect(new URL("/blog", request.nextUrl));
       }
 
       return true

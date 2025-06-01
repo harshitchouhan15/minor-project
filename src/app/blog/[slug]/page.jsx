@@ -35,6 +35,7 @@ const SinglePostPage = async ({ params }) => {
   // FETCH DATA WITHOUT AN API
   // const post = await getPost(slug);
 
+
   return (
     <div className={styles.container}>
       {post.img && (
@@ -53,7 +54,7 @@ const SinglePostPage = async ({ params }) => {
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>
-              {post.createdAt.toString().slice(4, 16)}
+              {new Date(post.createdAt).toLocaleString()}
             </span>
           </div>
         </div>
