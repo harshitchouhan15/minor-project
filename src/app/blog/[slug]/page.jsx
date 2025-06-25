@@ -3,6 +3,7 @@ import styles from "./singlePost.module.css";
 import PostUser from "@/components/postUser/postUser";
 import { Suspense } from "react";
 import { getPost } from "@/lib/data";
+import BlogDesc from "./BlogDesc";
 
 // FETCH DATA WITH AN API
 const getData = async (slug) => {
@@ -43,7 +44,7 @@ const SinglePostPage = async ({ params }) => {
           <Image src={post.img} alt="" fill className={styles.img} />
         </div>
       )}
-      <div className={styles.textContainer}>
+      <div className={styles.textContainer}  >
         <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
           {post && (
@@ -58,7 +59,9 @@ const SinglePostPage = async ({ params }) => {
             </span>
           </div>
         </div>
-        <div className={styles.content}>{post.desc}</div>
+            <div  className={styles.content}>{post.desc}</div>   
+        
+        <BlogDesc description={post.desc} />
       </div>
     </div>
   );

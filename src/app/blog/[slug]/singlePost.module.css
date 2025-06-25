@@ -46,6 +46,23 @@
 
 .content{
   font-size: 20px;
+  /* border: none;
+  min-height: -webkit-fill-available;
+  background: transparent;
+  color: white; */
+  
+
+}
+
+
+.summerizeBtn{
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px; 
+  background: rgb(35, 168, 35);
+  cursor: pointer;
+  color: whitesmoke;
+  width: fit-content;
 }
 
 @media (max-width:768px){

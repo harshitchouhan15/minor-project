@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./home.module.css";
+import ImageContainer from "@/components/ImageContainer";
 
 const Home = () => {
   return (
@@ -18,9 +19,7 @@ const Home = () => {
           <Image src="/brands.png" alt="" fill className={styles.brandImg}/>
         </div>
       </div>
-      <div className={styles.imgContainer}>
-        <Image src="/hero.gif" alt="" fill className={styles.heroImg}/>
-      </div>
+      <ImageContainer/>
     </div>
   );
 };

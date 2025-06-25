@@ -11,7 +11,7 @@ const links = [
     title: "Blogs",
     path: "/blog",
   },
-    {
+  {
     title: "Write",
     path: "/write",
   },
@@ -25,7 +25,7 @@ const links = [
   },
 ];
 
-const Links = ({session}) => {
+const Links = ({ session }) => {
   const [open, setOpen] = useState(false);
 
   // TEMPORARY
@@ -38,9 +38,30 @@ const Links = ({session}) => {
         {links.map((link) => (
           <NavLink item={link} key={link.title} />
         ))}
+
         {session?.user ? (
           <>
-            {session.user?.isAdmin && <NavLink item={{ title: "Admin", path: "/admin" }} />}
+            {session.user?.isAdmin && (
+              <NavLink item={{ title: "Admin", path: "/admin" }} />
+            )}
+            {/* {logged in user avatar} */}
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                width: 32,
+                height: 32,
+                fontWeight: 600,
+                justifyContent: "center",
+                borderRadius: "50%",
+                background: "white",
+                color: "#15023a",
+                marginRight:"8px"
+              }}
+            >
+              {session?.user?.email[0].toUpperCase()}{" "}
+            </div>
             <form action={handleLogout}>
               <button className={styles.logout}>Logout</button>
             </form>
